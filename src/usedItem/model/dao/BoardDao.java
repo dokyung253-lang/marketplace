@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class BoardDao {
     private BoardDao(){connect();}
@@ -45,5 +46,9 @@ public class BoardDao {
             System.out.println("[시스템오류] SQL 문법문제 발생 : "+ e );
         }
         return false;
+    }
+    // [2] 게시물 전체조회 dao
+    public ArrayList<BoardDao> Read(){
+
     }
 }
