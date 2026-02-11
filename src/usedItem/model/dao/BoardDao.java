@@ -27,9 +27,10 @@ public class BoardDao {
         }
     }
 
-    public boolean create(String mname,String pname String content, int price, int pw, String phoneNum ){
+    // [1] 게시물 등록 dao
+    public boolean create(String mname,String pname, String content, int price, int pw, String phoneNum ){
         try {
-            String sql = "insert into board( String mname, String context, int price, int pw, String phoneNum) values( ?, ?, ?, ?, ?, ? )";
+            String sql = "insert into board( mname, pname, content, price, pw, phoneNum) values( ?, ?, ?, ?, ?, ? )";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, mname);
             ps.setString(2, pname);

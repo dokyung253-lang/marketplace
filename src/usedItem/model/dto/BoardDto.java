@@ -7,8 +7,21 @@ public class BoardDto {
     String content;
     int price;
     int pw;
+    String phoneNum;
     String orderdate;
     boolean sold;
+
+    public BoardDto(int orderNum, String mname, String pname, String content, int price, int pw, String phoneNum, String orderdate, boolean sold) {
+        this.orderNum = orderNum;
+        this.mname = mname;
+        this.pname = pname;
+        this.content = content;
+        this.price = price;
+        this.pw = pw;
+        this.phoneNum = phoneNum;
+        this.orderdate = orderdate;
+        this.sold = sold;
+    }
 
     public int getOrderNum() {
         return orderNum;
@@ -58,6 +71,14 @@ public class BoardDto {
         this.pw = pw;
     }
 
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
     public String getOrderdate() {
         return orderdate;
     }
@@ -83,6 +104,7 @@ public class BoardDto {
                 ", content='" + content + '\'' +
                 ", price=" + price +
                 ", pw=" + pw +
+                ", phoneNum='" + phoneNum + '\'' +
                 ", orderdate='" + orderdate + '\'' +
                 ", sold=" + sold +
                 '}';
