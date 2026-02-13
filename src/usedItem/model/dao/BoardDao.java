@@ -1,9 +1,8 @@
 package usedItem.model.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import usedItem.model.dto.BoardDto;
+
+import java.sql.*;
 import java.util.ArrayList;
 
 public class BoardDao {
@@ -47,8 +46,25 @@ public class BoardDao {
         }
         return false;
     }
-    // [2] 게시물 전체조회 dao
-    public ArrayList<BoardDao> Read(){
+    // [2] 전체물품 목록 조회 dao
+    public ArrayList<BoardDto> Read(){
+        ArrayList<BoardDto> boards = new ArrayList<>(); // 조회 결과인 레코드(dto)들을 저장할 리스트/배열 선언
+        try {
+            String sql = "select * from board"; // 1] sql 작성한다.
+            PreparedStatement ps = conn.prepareStatement(sql); // 2] SQL 기재한다.
+            // 3] SQL 매개변수 대입한다
+            ResultSet rs = ps.executeQuery(); // 4] sql 실행 후 조회 결과 테이블 제어
+            // executeUpdate(): insert/update/delete vs executeQuary() : select
+            // ResultSet : select 결과물을 제어하는 인터페이스
+                // rs.next(): 조회 결과에서 다음레코드 한 번 이동, 만약에 레코드가 10개이면 next 10번
+            while( rs.next()) { // while(논리){ } 반복문, *레코드 1개씩 순회* 1개 레코드 -> 1개 DTO
+                // rs.get타입명(SQL속성명): 현재 레코드의 속성값 호출
+                int mNum = rs.getInt("mNum");
+            }
 
-    }
-}
+        }catch (SQLException e){
+            System.out.println("[시스템오류] SQL 문법 문제 발생 : "+ e);
+        }
+        return boards;
+    }// m end
+}// class end

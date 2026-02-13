@@ -2,6 +2,7 @@ package usedItem.model.dto;
 
 public class BoardDto {
     int orderNum;
+    int mNum;
     String mname;
     String pname;
     String content;
@@ -11,24 +12,20 @@ public class BoardDto {
     String orderdate;
     boolean sold;
 
-    public BoardDto(int orderNum, String mname, String pname, String content, int price, int pw, String phoneNum, String orderdate, boolean sold) {
-        this.orderNum = orderNum;
-        this.mname = mname;
-        this.pname = pname;
-        this.content = content;
-        this.price = price;
-        this.pw = pw;
-        this.phoneNum = phoneNum;
-        this.orderdate = orderdate;
-        this.sold = sold;
-    }
-
     public int getOrderNum() {
         return orderNum;
     }
 
     public void setOrderNum(int orderNum) {
         this.orderNum = orderNum;
+    }
+
+    public int getmNum() {
+        return mNum;
+    }
+
+    public void setmNum(int mNum) {
+        this.mNum = mNum;
     }
 
     public String getMname() {
@@ -95,10 +92,25 @@ public class BoardDto {
         this.sold = sold;
     }
 
+    public BoardDto(int orderNum, int mNum, String mname, String pname, String content, int price, int pw, String phoneNum, String orderdate, boolean sold) {
+        this.orderNum = orderNum;
+        this.mNum = mNum;
+        this.mname = mname;
+        this.pname = pname;
+        this.content = content;
+        this.price = price;
+        this.pw = pw;
+        this.phoneNum = phoneNum;
+        this.orderdate = orderdate;
+        this.sold = sold;
+
+    }
+
     @Override
     public String toString() {
         return "BoardDto{" +
                 "orderNum=" + orderNum +
+                ", mNum=" + mNum +
                 ", mname='" + mname + '\'' +
                 ", pname='" + pname + '\'' +
                 ", content='" + content + '\'' +
