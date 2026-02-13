@@ -1,6 +1,6 @@
 package usedItem.view;
 
-import usedItem.controller.BoardController;
+import usedItem.controller.ProductController;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -12,7 +12,7 @@ public class BoardView {
         return instance;
     }
 
-    private BoardController bc = BoardController.getInstance();
+    private ProductController bc = ProductController.getInstance();
     private Scanner scan = new Scanner(System.in);
 
     // [1] 메인페이지 구현
@@ -36,20 +36,29 @@ public class BoardView {
             }
         } // for end
     } // index end
-            // [1] 물품 등록 view
-            public void create(){ scan.nextLine();
-                System.out.print("닉네임 : "); String mname = scan.nextLine();
-                System.out.print("물품명 : "); String pname = scan.nextLine();
-                System.out.print("설명 : ");   String content = scan.nextLine();
-                System.out.print("가격 : "); int price = scan.nextInt();
-                System.out.print("비밀번호 : "); int pw = scan.nextInt();
-                System.out.print("전화번호 : "); String phoneNum = scan.next();
-                boolean result = bc.create( mname, pname, content, price, pw, phoneNum);
-                if( result ) {System.out.println("[안내] 게시물 등록완료 ");
-                }else{System.out.println("[경고] 게시물 등록 실패");}
-            }
+
+    // [1] Create view
+    public void create(){ scan.nextLine();
+        System.out.print("닉네임 : "); String mname = scan.nextLine();
+        System.out.print("물품명 : "); String pname = scan.nextLine();
+        System.out.print("설명 : ");   String content = scan.nextLine();
+        System.out.print("가격 : "); int price = scan.nextInt();
+        System.out.print("비밀번호 : "); int pw = scan.nextInt();
+        System.out.print("전화번호 : "); String phoneNum = scan.next();
+        boolean result = bc.create( mname, pname, content, price, pw, phoneNum);
+        if( result ) {System.out.println("[안내] 게시물 등록완료 ");
+        }else{System.out.println("[경고] 게시물 등록 실패");}
+    } // [1] Create end
+
+    // [2] Read view
+    public void read(){ scan.nextLine();
+        System.out.println("물품명: "); String pname = scan.nextLine();
+        System.out.print("가격 : "); int price = scan.nextInt();
+        System.out.print("닉네임 : "); String mname = scan.nextLine();
 
 
+        System.out.print("전화번호 : "); String phoneNum = scan.next();
+    }
 
 }// class end
 

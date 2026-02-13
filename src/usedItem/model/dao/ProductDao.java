@@ -5,10 +5,10 @@ import usedItem.model.dto.BoardDto;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class BoardDao {
-    private BoardDao(){connect();}
-    private static final BoardDao instance = new BoardDao();
-    public static BoardDao getInstance(){
+public class ProductDao {
+    private ProductDao(){connect();}
+    private static final ProductDao instance = new ProductDao();
+    public static ProductDao getInstance(){
         return instance;
     }
     // db 연동
@@ -27,7 +27,7 @@ public class BoardDao {
         }
     }
 
-    // [1] 게시물 등록 dao
+    // [1] Create dao
     public boolean create(String mname,String pname, String content, int price, int pw, String phoneNum ){
         try {
             String sql = "insert into usedItem( mname, pname, content, price, pw, phoneNum) values( ?, ?, ?, ?, ?, ? )";
@@ -45,8 +45,8 @@ public class BoardDao {
             System.out.println("[시스템오류] SQL 문법문제 발생 : "+ e );
         }
         return false;
-    }
-    // [2] 전체물품 목록 조회 dao
+    } // Create end
+    // [2] Read dao
     public ArrayList<BoardDto> Read(){
         ArrayList<BoardDto> boards = new ArrayList<>(); // 조회 결과인 레코드(dto)들을 저장할 리스트/배열 선언
         try {
@@ -59,9 +59,13 @@ public class BoardDao {
                 // rs.next(): 조회 결과에서 다음레코드 한 번 이동, 만약에 레코드가 10개이면 next 10번
             while( rs.next()) { // while(논리){ } 반복문, *레코드 1개씩 순회* 1개 레코드 -> 1개 DTO
                 // rs.get타입명(SQL속성명): 현재 레코드의 속성값 호출
-                int mNum = rs.getInt("mNum");
+                String pname = rs.getString("pname");
+                int price = rs.getInt("price");
+                String mname = rs.getString("mname");
+                String orderdate = rs.getString("orderdate");
+                boolean sold = rs.getBoolean("sold");
+                String phoneNum = rs.getString("phoneNum");
             }
-
         }catch (SQLException e){
             System.out.println("[시스템오류] SQL 문법 문제 발생 : "+ e);
         }

@@ -1,16 +1,14 @@
 package usedItem.controller;
 
-import usedItem.model.dao.BoardDao;
+import usedItem.model.dao.ProductDao;
 
-import java.util.Scanner;
-
-public class BoardController {
-    private BoardController(){}
-    private static final BoardController instance = new BoardController();
-    public static BoardController getInstance(){
+public class ProductController {
+    private ProductController(){}
+    private static final ProductController instance = new ProductController();
+    public static ProductController getInstance(){
         return instance;
     }
-    private BoardDao bd = BoardDao.getInstance();
+    private ProductDao bd = ProductDao.getInstance();
 
     // [1] 물품등록 Controller
     public boolean create(String mname, String pname, String content, int price, int pw, String phoneNum ){
