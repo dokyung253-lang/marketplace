@@ -59,9 +59,13 @@ public class BoardDao {
                 // rs.next(): 조회 결과에서 다음레코드 한 번 이동, 만약에 레코드가 10개이면 next 10번
             while( rs.next()) { // while(논리){ } 반복문, *레코드 1개씩 순회* 1개 레코드 -> 1개 DTO
                 // rs.get타입명(SQL속성명): 현재 레코드의 속성값 호출
-                int mNum = rs.getInt("mNum");
+                String pname = rs.getString("pname");
+                int price = rs.getInt("price");
+                String mname = rs.getString("mname");
+                String orderdate = rs.getString("orderdate");
+                boolean sold = rs.getBoolean("sold");
+                String phoneNum = rs.getString("phoneNum");
             }
-
         }catch (SQLException e){
             System.out.println("[시스템오류] SQL 문법 문제 발생 : "+ e);
         }
