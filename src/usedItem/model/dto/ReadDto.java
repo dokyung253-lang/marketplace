@@ -8,6 +8,7 @@ public class ReadDto {
     private boolean sold;
     private String phoneNum;
 
+
     public String getPname() {
         return pname;
     }

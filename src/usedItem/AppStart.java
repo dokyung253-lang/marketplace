@@ -1,9 +1,9 @@
 package usedItem;
-import usedItem.view.BoardView;
+import usedItem.view.ProductView;
 
 public class AppStart {
     public static void main(String[] args) {
 
-        BoardView.getInstance().index();
+        ProductView.getInstance().index();
     }
 }

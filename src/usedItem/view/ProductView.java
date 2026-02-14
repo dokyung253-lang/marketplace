@@ -1,18 +1,20 @@
 package usedItem.view;
 
 import usedItem.controller.ProductController;
+import usedItem.model.dto.ReadDto;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class BoardView {
-    private BoardView(){}
-    private static final BoardView instance = new BoardView();
-    public static BoardView getInstance() {
+public class ProductView {
+    private ProductView(){}
+    private static final ProductView instance = new ProductView();
+    public static ProductView getInstance() {
         return instance;
     }
 
-    private ProductController bc = ProductController.getInstance();
+    private ProductController pc = ProductController.getInstance();
     private Scanner scan = new Scanner(System.in);
 
     // [1] 메인페이지 구현
@@ -43,22 +45,25 @@ public class BoardView {
         System.out.print("물품명 : "); String pname = scan.nextLine();
         System.out.print("설명 : ");   String content = scan.nextLine();
         System.out.print("가격 : "); int price = scan.nextInt();
-        System.out.print("비밀번호 : "); int pw = scan.nextInt();
+        System.out.print("비밀번호 : "); String pw = scan.nextLine();
         System.out.print("전화번호 : "); String phoneNum = scan.next();
-        boolean result = bc.create( mname, pname, content, price, pw, phoneNum);
+        boolean result = pc.create( mname, pname, content, price, pw, phoneNum);
         if( result ) {System.out.println("[안내] 게시물 등록완료 ");
-        }else{System.out.println("[경고] 게시물 등록 실패");}
+        }else{System.out.println("[경고] 게시물 등록 실패");
     } // [1] Create end
 
     // [2] Read view
-    public void read(){ scan.nextLine();
-        System.out.println("물품명: "); String pname = scan.nextLine();
-        System.out.print("가격 : "); int price = scan.nextInt();
-        System.out.print("닉네임 : "); String mname = scan.nextLine();
+    public void read(){
+            ArrayList<ReadDto> ReadDtos = pc.read(); // 임시
+            for(int i=0; i <= ReadDtos.size()-1; i++){
+                ReadDto readDto = ReadDtos.get(i);
+                System.out.printf("물품명 : %s | 가격 : %d | 닉네임 : %s | 등록일 : %s | 판매여부 : %b | 연락처 : %s \n " ,
+                readDto.getPname() , readDto.getPrice(), readDto.getMname(),
+                readDto.getOrderdate(), readDto.isSold(), readDto.getPhoneNum());
+            }
+        };
+    };
 
 
-        System.out.print("전화번호 : "); String phoneNum = scan.next();
-    }
-
-}// class end
+    }// class end
 

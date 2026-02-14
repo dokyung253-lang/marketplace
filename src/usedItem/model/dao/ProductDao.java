@@ -1,6 +1,6 @@
 package usedItem.model.dao;
 
-import usedItem.model.dto.BoardDto;
+import usedItem.model.dto.ReadDto;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,15 +28,14 @@ public class ProductDao {
     }
 
     // [1] Create dao
-    public boolean create(String mname,String pname, String content, int price, int pw, String phoneNum ){
-        try {
-            String sql = "insert into usedItem( mname, pname, content, price, pw, phoneNum) values( ?, ?, ?, ?, ?, ? )";
+    public boolean create(String mname,String pname, String content, int price, String pw, String phoneNum ){
+        try {String sql = "insert into usedItem( mname, pname, content, price, pw, phoneNum) values( ?, ?, ?, ?, ?, ? )";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, mname);
             ps.setString(2, pname);
             ps.setString(3, content);
             ps.setInt(4, price);
-            ps.setInt(5, pw);
+            ps.setString(5, pw);
             ps.setString(6, phoneNum);
             int count = ps.executeUpdate();
             if( count == 1 ){ return true; }
@@ -46,11 +45,12 @@ public class ProductDao {
         }
         return false;
     } // Create end
+
     // [2] Read dao
-    public ArrayList<BoardDto> Read(){
-        ArrayList<BoardDto> boards = new ArrayList<>(); // 조회 결과인 레코드(dto)들을 저장할 리스트/배열 선언
+    public ArrayList<ReadDto> Read(){
+        ArrayList<ReadDto> Read = new ArrayList<>(); // 조회 결과인 레코드(dto)들을 저장할 리스트/배열 선언
         try {
-            String sql = "select * from board"; // 1] sql 작성한다.
+            String sql = "select * from useditem.product"; // 1] sql 작성한다.
             PreparedStatement ps = conn.prepareStatement(sql); // 2] SQL 기재한다.
             // 3] SQL 매개변수 대입한다
             ResultSet rs = ps.executeQuery(); // 4] sql 실행 후 조회 결과 테이블 제어
@@ -69,6 +69,6 @@ public class ProductDao {
         }catch (SQLException e){
             System.out.println("[시스템오류] SQL 문법 문제 발생 : "+ e);
         }
-        return boards;
+        return Read;
     }// m end
 }// class end

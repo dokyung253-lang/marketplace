@@ -1,10 +1,10 @@
 package usedItem.model.dto;
 
-public class ProductDeleteDto {
+public class DeleteDto {
     private int orderNum;  // 어떤 글 삭제할지
     private String pw;     // 비밀번호 확인
 
-    public ProductDeleteDto(String pw, int orderNum) {
+    public DeleteDto(String pw, int orderNum) {
         this.pw = pw;
         this.orderNum = orderNum;
     }
