@@ -12,7 +12,7 @@ public class ProductDao {
         return instance;
     }
     // db 연동
-    private String url = "jdbc:mysql://localhost:3306/usedItem";
+    private String url = "jdbc:mysql://localhost:3306/useditem";
     private String user = "root"; private String password = "1234";
     // 2) 연동 인터페이스 변수 선언
     private Connection conn;

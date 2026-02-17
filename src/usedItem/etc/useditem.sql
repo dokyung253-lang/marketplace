@@ -11,19 +11,20 @@ create table user(
 
 drop table if exists product;
 
-create table product(
-    orderNum int auto_increment primary key,
-    mno int,                       -- 회원 번호 (null 허용 또는 기본값)
-    mname varchar(20) not null,    -- [추가] 닉네임 입력 조건
-    pname varchar(20) not null,
-    price int not null,
-    content varchar(200) not null,
-    pw varchar(100) not null,      -- [추가] 비밀번호 입력 조건
-    phoneNum varchar(13) not null,
-    orderdate datetime default now() not null,
-    sold bool default false,
-    foreign key (mno) references user(mno) -- 기존 외래키 유지
+CREATE TABLE product(
+    orderNum INT AUTO_INCREMENT PRIMARY KEY,
+    mno INT DEFAULT 1,                      
+    mname VARCHAR(20) NOT NULL,            
+    pname VARCHAR(20) NOT NULL,          
+    price INT NOT NULL,                      
+    content VARCHAR(200) NOT NULL,          
+    pw VARCHAR(100) NOT NULL,            
+    phoneNum VARCHAR(13) NOT NULL,          
+    orderdate DATETIME DEFAULT NOW() NOT NULL,
+    sold BOOL DEFAULT FALSE,
+    FOREIGN KEY (mno) REFERENCES user(mno)
 );
+
 
 SELECT p.orderNum, p.mno, p.pname, p.price, p.orderdate, p.sold, p.content, u.mname, u.phoneNum
 FROM product p
