@@ -51,16 +51,23 @@ public class ProductView {
         scan.nextLine();
         System.out.print("닉네임 : ");
         String mname = scan.nextLine();
+
         System.out.print("물품명 : ");
         String pname = scan.nextLine();
+
         System.out.print("설명 : ");
         String content = scan.nextLine();
+
         System.out.print("가격 : ");
         int price = scan.nextInt();
+        scan.nextLine();
+
         System.out.print("비밀번호 : ");
         String pw = scan.nextLine();
+
         System.out.print("전화번호 : ");
-        String phoneNum = scan.next();
+        String phoneNum = scan.nextLine();
+
         boolean result = pc.create(mname, pname, content, price, pw, phoneNum);
         if (result) {
             System.out.println("[안내] 게시물 등록완료 ");
