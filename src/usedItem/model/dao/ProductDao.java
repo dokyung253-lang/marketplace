@@ -41,7 +41,9 @@ public class ProductDao {
             ps.setString(5, pw);
             ps.setString(6, phoneNum);
 
+            System.out.println("[실제 실행될 SQL] " + ps.toString());
             int count = ps.executeUpdate();
+            System.out.println("[반영된 행 개수] " + count);
             return count == 1;
 
         } catch (SQLException e) {
