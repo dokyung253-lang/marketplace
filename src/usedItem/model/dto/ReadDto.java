@@ -1,13 +1,31 @@
 package usedItem.model.dto;
 
 public class ReadDto {
+    private int mno;
     private String pname;
     private int price;
     private String mname;
     private String orderdate;
     private boolean sold;
-    private String phoneNum;
+    private String PhoneNum;
 
+    public ReadDto(int mno, String pname, int price, String mname, String orderdate, boolean sold, String phoneNum) {
+        this.mno = mno;
+        this.pname = pname;
+        this.price = price;
+        this.mname = mname;
+        this.orderdate = orderdate;
+        this.sold = sold;
+        PhoneNum = phoneNum;
+    }
+
+    public int getMno() {
+        return mno;
+    }
+
+    public void setMno(int mno) {
+        this.mno = mno;
+    }
 
     public String getPname() {
         return pname;
@@ -50,32 +68,24 @@ public class ReadDto {
     }
 
     public String getPhoneNum() {
-        return phoneNum;
+        return PhoneNum;
     }
 
     public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+        PhoneNum = phoneNum;
     }
 
     @Override
     public String toString() {
         return "ReadDto{" +
-                "pname='" + pname + '\'' +
+                "mno=" + mno +
+                ", pname='" + pname + '\'' +
                 ", price=" + price +
                 ", mname='" + mname + '\'' +
                 ", orderdate='" + orderdate + '\'' +
                 ", sold=" + sold +
-                ", phoneNum='" + phoneNum + '\'' +
+                ", PhoneNum='" + PhoneNum + '\'' +
                 '}';
     }
-
-    public ReadDto(String pname, int price, String mname, String orderdate, boolean sold, String phoneNum) {
-        this.pname = pname;
-        this.price = price;
-        this.mname = mname;
-        this.orderdate = orderdate;
-        this.sold = sold;
-        this.phoneNum = phoneNum;
-    }
-
 }
+
